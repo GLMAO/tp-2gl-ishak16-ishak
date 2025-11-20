@@ -1,11 +1,23 @@
 package com.polytech.tp;
 
+/**
+ * Classe de base pour tous les décorateurs de cours. Elle délègue par défaut les appels
+ * aux méthodes de l'interface {@link ICours} au cours décoré.
+ */
 public abstract class CoursDecorator implements ICours {
-    protected ICours coursDecorated;
+    protected final ICours coursDecorated;
 
-    public CoursDecorator(ICours cours) {
+    protected CoursDecorator(ICours cours) {
         this.coursDecorated = cours;
     }
-    
-    // TODO: Forcer l'implémentation des méthodes de ICours
+
+    @Override
+    public String getDescription() {
+        return coursDecorated.getDescription();
+    }
+
+    @Override
+    public double getDuree() {
+        return coursDecorated.getDuree();
+    }
 }
